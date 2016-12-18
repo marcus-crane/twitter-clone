@@ -2,11 +2,12 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
+const moment = require('moment');
 
-const Knex = require('knex')
-const knexConfig = require('./knexfile')
+const Knex = require('knex');
+const knexConfig = require('./knexfile');
 
-const knex = Knex(knexConfig['development'])
+const knex = Knex(knexConfig['development']);
 
 app.set('view engine', 'ejs');
 app.set('views', (__dirname + '/views'));
@@ -16,7 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     knex('tweets').select()
     .then((query) => {
-        res.render('tweets', { tweets: query })
+        for (i in query) {
+            query[i].time_from_now = moment(query[i].created_at).fromNow();
+        }
+        res.render('tweets', { tweets: query });
     })
 })
 
