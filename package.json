@@ -4,7 +4,10 @@
   "description": "Twitter Clone from Spark School",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run"
   },
   "author": "Marcus <marcus@thingsima.de>",
   "license": "MIT",
