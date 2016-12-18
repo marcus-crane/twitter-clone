@@ -14,7 +14,10 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.render('tweets');
+    knex('tweets').select()
+    .then((query) => {
+        res.render('tweets', { tweets: query })
+    })
 })
 
 app.post('/tweets/create', (req, res) => {

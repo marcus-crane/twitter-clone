@@ -12,6 +12,16 @@
                 <textarea id="tweet-form-body" name="message" placeholder="What's happening?"></textarea>
                 <button id="tweet-form-button">Tweet</button>
             </form>
+            <% for(var i = 0; i < tweets.length; i++) { %>
+                <% var tweet = tweets[i]; %>
+                <article class="tweet">
+                  <p>
+                    <a href="http://twitter.com/<%= tweet.username %>"><%= tweet.username %></a>
+                    <span class="light-grey"> - <%= tweet.created_at %></span>
+                  </p>
+                  <p><%= tweet.message %></p>
+                </article>
+              <% } %>
         </main>
     </body>
 </html>
