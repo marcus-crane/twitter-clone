@@ -24,6 +24,18 @@ app.get('/', (req, res) => {
     })
 })
 
+app.get('/tweets/:id([0-9]+)/edit', (req, res) => {
+    knex('tweets').where('id', req.params.id)
+    .then((response) => {
+        if (response.length === 0) {
+            res.redirect('/')
+            console.log('No tweet found')
+        } else {
+            res.render('edit-tweet', { tweet: response[0] }) 
+        }
+    })
+})
+
 app.post('/tweets/create', (req, res) => {
     res.send('Creating tweet...');
     knex('tweets')
