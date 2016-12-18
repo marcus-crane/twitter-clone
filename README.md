@@ -10,6 +10,6 @@ This version has some alterations such as
 
 Mainly just acting as a refresher since it's been a wee bit since I did anything serious with Javascript.
 
-The "course" is aimed at beginners so instead of taking 7 days, it's more like a few hours but I've added in some extras like using Knex to interact with a Postgres Docker instance.
+The "course" is aimed at beginners so instead of taking 7 days, it's more like a few hours.
 
 Why Docker? To make things needlessly complicated! Actually just because I'd forgotten how to set it up locally so this was a good excuse to figure it out.
