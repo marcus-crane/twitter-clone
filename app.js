@@ -31,6 +31,9 @@ app.get('/tweets/:id([0-9]+)/edit', (req, res) => {
             res.redirect('/')
             console.log('No tweet found')
         } else {
+            for (i in response) {
+                response[i].time_from_now = moment(response[i].created_at).fromNow();
+            }
             res.render('edit-tweet', { tweet: response[0] }) 
         }
     })

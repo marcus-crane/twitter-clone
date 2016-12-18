@@ -1,0 +1,8 @@
+<article class="tweet">
+  <p>
+    <a href="http://twitter.com/<%= tweet.username %>"><%= tweet.username %></a>
+    <span class="light-grey"> - <%= tweet.time_from_now %></span>
+  </p>
+  <p><%= tweet.message %></p>
+  <p><a href="/tweets/<%= tweet.id %>/edit">Edit</a></p>
+</article>
