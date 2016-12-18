@@ -39,11 +39,19 @@ app.get('/tweets/:id([0-9]+)/edit', (req, res) => {
     })
 })
 
+app.post('/tweets/:id([0-9]+)/update', (req, res) => {
+    knex('tweets').where('id', req.params.id)
+        .update({ 
+            username: req.body.username,
+            message: req.body.message
+        })
+        .then(() => res.redirect('/'))
+})
+
 app.post('/tweets/create', (req, res) => {
-    res.send('Creating tweet...');
     knex('tweets')
       .insert({ username: req.body.username, message: req.body.message })
-      .finally(() => knex.destroy());
+      .then(() => res.redirect('/'))
 })
 
 app.listen(8080, () => {

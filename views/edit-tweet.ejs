@@ -9,7 +9,7 @@
         <%- include('_tweet', { tweet: tweet }); %>
         <form id="tweet-form" action="/tweets/<%= tweet.id %>/update" method="POST">
             <input id="tweet-form-handle" type="text" name="username" placeholder="@ethernetsalad" value="<%= tweet.username %>">
-            <textarea id="tweet-form-body" name="body" placeholder="What's happening?"><%= tweet.body %></textarea>
+            <textarea id="tweet-form-body" name="message" placeholder="What's happening?"><%= tweet.message %></textarea>
             <button id="tweet-form-button">Update Tweet</button>
         </form>
     </main>
