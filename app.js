@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    knex('tweets').select()
+    knex('tweets').select().orderBy('id', 'desc')
     .then((query) => {
         for (i in query) {
             query[i].time_from_now = moment(query[i].created_at).fromNow();
