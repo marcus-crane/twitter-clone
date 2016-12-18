@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
     res.render('tweets');
 })
 
+app.post('/tweets/create', (req, res) => {
+    res.send('Creating tweet...');
+})
+
 app.listen(8080, () => {
     console.log('Listening on Port 8080');
 })
