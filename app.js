@@ -3,6 +3,11 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const Knex = require('knex')
+const knexConfig = require('./knexfile')
+
+const knex = Knex(knexConfig['development'])
+
 app.set('view engine', 'ejs');
 app.set('views', (__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
@@ -13,13 +18,10 @@ app.get('/', (req, res) => {
 })
 
 app.post('/tweets/create', (req, res) => {
-    let username = req.body.username;
-    let message = req.body.message;
-
-    console.log(`Username: ${username}`)
-    console.log(`Message: ${message}`)
-    
     res.send('Creating tweet...');
+    knex('tweets')
+      .insert({ username: req.body.username, message: req.body.message })
+      .finally(() => knex.destroy());
 })
 
 app.listen(8080, () => {
